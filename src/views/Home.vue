@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <base-layout ready="true">
+    <div class="home">
+      <p>
+        Welcome at out e-library!
+        This website is made for a recrutation task.
+      </p>
+      <h1>by Adrian Jaskot</h1>
+    </div>
+  </base-layout>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import BaseLayout from '@/layouts/BaseLayout.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    BaseLayout
   }
 }
 </script>
+
+<style lang="scss">
+@import '@/assets/scss/_variables.scss';
+
+h1 {
+  color: $mainColor;
+}
+</style>

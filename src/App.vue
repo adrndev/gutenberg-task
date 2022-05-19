@@ -1,32 +1,85 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="header">
+      <div class="navbar">
+        <nav class="main-menu">
+          <router-link to="/">Home</router-link>
+          <router-link to="/books">Books</router-link>
+          <router-link to="/favourites">Favourites</router-link>
+        </nav>
+        <SearchInput />
+      </div>
     </div>
-    <router-view/>
+    <keep-alive include="BooksLibrary">
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
+<script>
+import SearchInput from '@/components/SearchInput.vue'
+
+export default {
+  components: {
+    SearchInput
+  }
+}
+</script>
+
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import '@/assets/scss/_variables.scss';
+
+body {
+  margin: 0;
 }
 
-#nav {
-  padding: 30px;
+#app {
+  font-family: 'Roboto', sans-serif;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.header {
+  background-color: $mainColor;
+  padding: 1rem 2rem;
 
-    &.router-link-exact-active {
-      color: #42b983;
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .main-menu {
+      color: #fff;
+      font-size: 18px;
+
+      a {
+        color: inherit;
+        padding: 8px;
+
+        &:hover {
+          background: $mainDark;
+        }
+      }
     }
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $mainColor;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $mainDark;
 }
 </style>
